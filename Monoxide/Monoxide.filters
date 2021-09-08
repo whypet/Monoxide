@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="callbacks.c" />
+    <ClCompile Include="math.c" />
+    <ClCompile Include="payloads.c" />
+    <ClCompile Include="threads.c" />
+    <ClCompile Include="color.c" />
+    <ClCompile Include="destruction.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="callbacks.h" />
+    <ClInclude Include="monoxide.h" />
+    <ClInclude Include="math.h" />
+    <ClInclude Include="payloads.h" />
+    <ClInclude Include="def.h" />
+    <ClInclude Include="threads.h" />
+    <ClInclude Include="color.h" />
+    <ClInclude Include="destruction.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Eruption.rc" />
+  </ItemGroup>
+</Project>
