@@ -45,16 +45,16 @@ xorshift16:
 	ret
 
 text_loop:
-	mov ah, 02h
-	xor bh, bh
-	xor dl, dl
-	int 10h
+	mov ah, 0x02 ; Set cursor position
+	xor bh, bh   ; Page number
+	xor dl, dl   ; Column
+	int 0x10
 	
 	mov si, string
 .char_loop:
-	lodsb
-	or al, al
-	jz .char_loop_end
+	lodsb             ; Load character from SI
+	or al, al         ; Testing for character
+	jz .char_loop_end ; Check if character is zero termination
 
 	push ax
 	mov bx, word [seed]
@@ -63,7 +63,7 @@ text_loop:
 	mov bl, al
 	pop ax
 
-	mov ah, 0x0E
+	mov ah, 0x0E ; Print character
 	int 0x10
 	jmp .char_loop
 .char_loop_end:
