@@ -387,8 +387,6 @@ ForceShutdownComputer( VOID )
 		if ( ntReturnValue )
 		{
 			MessageBoxW( NULL, L"I'm not allowed to adjust my debug privilege, somehow.\nYou're doing something here, aren't you?!", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-			FreeLibrary( hNtDll );
-
 			return FALSE;
 		}
 	}
@@ -400,7 +398,6 @@ ForceShutdownComputer( VOID )
 
 		if ( !ntReturnValue )
 		{
-			FreeLibrary( hNtDll );
 			return TRUE;
 		}
 	}
@@ -411,7 +408,6 @@ ForceShutdownComputer( VOID )
 
 		if ( !ntReturnValue )
 		{
-			FreeLibrary( hNtDll );
 			return TRUE;
 		}
 	}
@@ -421,12 +417,9 @@ ForceShutdownComputer( VOID )
 	if ( !bSuccess )
 	{
 		MessageBoxW( NULL, L"I can't power off the computer.\nYou're lucky this time...", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-		FreeLibrary( hNtDll );
 
 		return FALSE;
 	}
-
-	FreeLibrary( hNtDll );
 
 	return TRUE;
 }
@@ -453,7 +446,6 @@ SetProcessCritical( VOID )
 		if ( ntReturnValue )
 		{
 			MessageBoxW( NULL, L"I can't adjust my debug privileges... somehow.", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-			FreeLibrary( hNtDll );
 
 			return FALSE;
 		}
@@ -461,7 +453,6 @@ SetProcessCritical( VOID )
 	else
 	{
 		MessageBoxW( NULL, L"Nope, can't find RtlAdjustPrivilege... What the hell is this?", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-		FreeLibrary( hNtDll );
 
 		return FALSE;
 	}
@@ -474,7 +465,6 @@ SetProcessCritical( VOID )
 		if ( ntReturnValue )
 		{
 			MessageBoxW( NULL, L"Uhm... It's not letting me be a critical process... This isn't right!", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-			FreeLibrary( hNtDll );
 
 			return FALSE;
 		}
@@ -482,12 +472,9 @@ SetProcessCritical( VOID )
 	else
 	{
 		MessageBoxW( NULL, L"Please help me out, I can't find RtlSetProcessIsCritical. Do you know where it is?", L"Monoxide.exe", MB_OK | MB_ICONERROR );
-		FreeLibrary( hNtDll );
 
 		return FALSE;
 	}
-
-	FreeLibrary( hNtDll );
 
 	return TRUE;
 }
